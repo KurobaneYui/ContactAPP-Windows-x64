@@ -5,10 +5,71 @@
     xmlns:local="using:Contact_Windowsx64"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:data="using:Contact_Windowsx64"
+    mc:Ignorable="d">
 
-    <Grid>
-
-    </Grid>
+    <NavigationView IsSettingsVisible="True"
+                    x:Name="navigationView"
+                    AlwaysShowHeader="False"
+                    ItemInvoked="NavigationView_ItemInvoked"
+                    x:FieldModifier="Public"
+                    IsBackButtonVisible="Collapsed">
+        <NavigationView.Background>
+            <AcrylicBrush BackgroundSource="HostBackdrop"
+                          Opacity="0.8"
+                          FallbackColor="DimGray"
+                          TintColor="DimGray"
+                          TintOpacity="0.5"
+                          TintLuminosityOpacity="0.5"/>
+        </NavigationView.Background>
+        <NavigationView.AutoSuggestBox>
+            <AutoSuggestBox x:Name="autoSuggestBox"
+                            PlaceholderText="Search"
+                            QueryIcon="Find"
+                            TextChanged="autoSuggestBox_TextChanged"
+                            QuerySubmitted="autoSuggestBox_QuerySubmitted"
+                            SuggestionChosen="autoSuggestBox_SuggestionChosen">
+                <AutoSuggestBox.ItemTemplate>
+                    <DataTemplate x:DataType="data:ContactFavourate">
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Width="40"
+                                     Height="40"
+                                     Margin="4">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding ProfileImage}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock FontSize="20" Text="{Binding FullName}" Margin="4"/>
+                            <TextBlock FontSize="20" Text="{Binding Company}" Margin="4"/>
+                            <TextBlock Text="{Binding ID}" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </AutoSuggestBox.ItemTemplate>
+            </AutoSuggestBox>
+        </NavigationView.AutoSuggestBox>
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Name="favourate" Content="常用联系人" IsSelected="True">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets"
+                              Glyph="&#xE006;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Name="contactList" Content="联系人列表">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets"
+                              Glyph="&#xE292;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItem x:Name="AddContact" Content="添加联系人">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets"
+                              Glyph="&#xE109;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+        <NavigationView.Content>
+            <Frame x:Name="navigationViewFrame"/>
+        </NavigationView.Content>
+    </NavigationView>
 </Page>

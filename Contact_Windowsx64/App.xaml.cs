@@ -70,6 +70,11 @@ namespace Contact_Windowsx64
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
+
+                Windows.ApplicationModel.Core.CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+                Windows.UI.ViewManagement.ApplicationViewTitleBar titleBar = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar;
+                titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
             }
         }
 
