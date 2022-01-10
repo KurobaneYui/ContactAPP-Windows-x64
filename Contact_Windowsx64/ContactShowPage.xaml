@@ -116,6 +116,7 @@
                                 Height="28"
                                 Padding="0"
                                 Background="Transparent"
+                                IsEnabled="False"
                                 Click="Favourate_Button_Click">
                             <FontIcon FontFamily="Segoe MDL2 Assets"
                                       Glyph="&#xE00B;"
@@ -141,6 +142,7 @@
                                 Height="28"
                                 Padding="0"
                                 Background="Transparent"
+                                IsEnabled="False"
                                 Click="Favourate_Button_Click">
                             <FontIcon FontFamily="Segoe MDL2 Assets"
                                       Glyph="&#xE00B;"
@@ -166,6 +168,7 @@
                                 Height="28"
                                 Padding="0"
                                 Background="Transparent"
+                                IsEnabled="False"
                                 Click="Favourate_Button_Click">
                             <FontIcon FontFamily="Segoe MDL2 Assets"
                                       Glyph="&#xE00B;"
@@ -191,6 +194,7 @@
                                 Height="28"
                                 Padding="0"
                                 Background="Transparent"
+                                IsEnabled="False"
                                 Click="Favourate_Button_Click">
                             <FontIcon FontFamily="Segoe MDL2 Assets"
                                       Glyph="&#xE00B;"
@@ -216,6 +220,7 @@
                                 Height="28"
                                 Padding="0"
                                 Background="Transparent"
+                                IsEnabled="False"
                                 Click="Favourate_Button_Click">
                             <FontIcon FontFamily="Segoe MDL2 Assets"
                                       Glyph="&#xE00B;"
@@ -241,6 +246,7 @@
                                 Height="28"
                                 Padding="0"
                                 Background="Transparent"
+                                IsEnabled="False"
                                 Click="Favourate_Button_Click">
                             <FontIcon FontFamily="Segoe MDL2 Assets"
                                       Glyph="&#xE00B;"
@@ -252,7 +258,7 @@
             <TextBox x:Name="birthday"
                  Header="生日："
                  RelativePanel.AlignHorizontalCenterWithPanel="True"
-                 RelativePanel.Below="emailAddr1"
+                 RelativePanel.Below="emailAddr3"
                  IsReadOnly="False"
                  BorderBrush="{ThemeResource TextBoxBorderThemeBrush}"
                  BorderThickness="0 0 0 1.5"

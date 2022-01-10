@@ -49,9 +49,10 @@ namespace Contact_Windowsx64
                 _item = (ContactEditor)e.Parameter;
                 ContactEditor item = (ContactEditor)_item;
 
-                ImageBrush brush = new ImageBrush();
-                brush.ImageSource = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(this.BaseUri, item.ProfileImage));
-                (profileImage.Content as Windows.UI.Xaml.Shapes.Ellipse).Fill = brush;
+                Windows.UI.Xaml.Media.Imaging.BitmapImage img = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(this.BaseUri, item.ProfileImage));
+                img.CreateOptions = Windows.UI.Xaml.Media.Imaging.BitmapCreateOptions.IgnoreImageCache;
+                ((profileImage.Content as Windows.UI.Xaml.Shapes.Ellipse).Fill as ImageBrush).ImageSource = img;
+
                 Windows.UI.Color color = item.IsFavourate ? Windows.UI.Colors.Red : Windows.UI.Colors.Gray;
                 ((favourate.Content as FontIcon).Foreground as SolidColorBrush).Color = color;
                 lastName.Text = item.LastName;
@@ -144,7 +145,15 @@ namespace Contact_Windowsx64
                 _stream = null;
             }
 
-            (this.Parent as Frame).Navigate(typeof(ContactShowPage), item);
+            if (((this.Parent as Frame).Parent as NavigationView) == null)
+            {
+                (this.Parent as Frame).Navigate(typeof(ContactShowPage), item);
+            }
+            else
+            {
+                ContactFavourate i = new ContactFavourate(item.ID);
+                (((this.Parent as Frame).Parent as NavigationView).Parent as MainPage).FromFavouratePage(i);
+            }
         }
 
         private void Favourate_Button_Click(object sender, RoutedEventArgs e)
@@ -188,9 +197,10 @@ namespace Contact_Windowsx64
                 fs.Write(_stream.ToArray(), 0, _stream.ToArray().Length);
                 fs.Flush();
                 fs.Close();
-                ImageBrush brush = new ImageBrush();
-                brush.ImageSource = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(this.BaseUri, ApplicationData.Current.LocalFolder.Path + @"\tmp.png"));
-                (profileImage.Content as Windows.UI.Xaml.Shapes.Ellipse).Fill = brush;
+
+                Windows.UI.Xaml.Media.Imaging.BitmapImage img = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(this.BaseUri, ApplicationData.Current.LocalFolder.Path + @"\tmp.png"));
+                img.CreateOptions = Windows.UI.Xaml.Media.Imaging.BitmapCreateOptions.IgnoreImageCache;
+                ((profileImage.Content as Windows.UI.Xaml.Shapes.Ellipse).Fill as ImageBrush).ImageSource = img;
             }
             else
             {

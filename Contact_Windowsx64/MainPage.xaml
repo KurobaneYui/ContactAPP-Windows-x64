@@ -36,7 +36,12 @@
                                      Height="40"
                                      Margin="4">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding ProfileImage}"/>
+                                    <ImageBrush>
+                                        <ImageBrush.ImageSource>
+                                            <BitmapImage CreateOptions="IgnoreImageCache"
+                                                         UriSource="{Binding ProfileImage}"/>
+                                        </ImageBrush.ImageSource>
+                                    </ImageBrush>
                                 </Ellipse.Fill>
                             </Ellipse>
                             <TextBlock FontSize="20" Text="{Binding FullName}" Margin="4"/>

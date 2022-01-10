@@ -37,7 +37,12 @@
                              RelativePanel.AlignHorizontalCenterWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="{Binding ProfileImage}"/>
+                            <ImageBrush>
+                                <ImageBrush.ImageSource>
+                                    <BitmapImage CreateOptions="IgnoreImageCache"
+                                                 UriSource="{Binding ProfileImage}"/>
+                                </ImageBrush.ImageSource>
+                            </ImageBrush>
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock x:Name="fullName"

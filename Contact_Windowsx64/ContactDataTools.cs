@@ -62,7 +62,7 @@ namespace Contact_Windowsx64
         public string Company { get; set; }
         public string Job { get; set; }
         public string Birthday { get { return birthday is null ? "" : ((DateTime)birthday).ToString("yyyy-MM-dd"); } set { birthday = value == "" ? (DateTime?)null : DateTime.Parse(value); } }
-        public string ProfileImage { get { return profileImage ? ApplicationData.Current.LocalFolder.Path + $@"\{id}.png" : @".\Assets\GrayBackground.png"; } set { profileImage = value.Length != 0; } }
+        public string ProfileImage { get { return profileImage ? ApplicationData.Current.LocalFolder.Path + $@"\{id}.png" : @"ms-appx:///Assets/GrayBackground.png"; } set { profileImage = value.Length != 0; } }
         public bool IsFavourate { get; set; }
 
         public ContactEditor(Int32 id_init)
@@ -107,7 +107,7 @@ namespace Contact_Windowsx64
         public string Company { get; set; }
         public string Job { get; set; }
         public string Birthday { get { return birthday == null ? "" : ((DateTime)birthday).ToString("yyyy-MM-dd"); } set { birthday = value == "" ? (DateTime?)null : DateTime.Parse(value); } }
-        public string ProfileImage { get { return profileImage ? ApplicationData.Current.LocalFolder.Path + $@"\{id}.png" : @".\Assets\GrayBackground.png"; } set { profileImage = value.Length != 0; } }
+        public string ProfileImage { get { return profileImage ? ApplicationData.Current.LocalFolder.Path + $@"\{id}.png" : @"ms-appx:///Assets/GrayBackground.png"; } set { profileImage = value.Length != 0; } }
         public bool IsFavourate { get; set; }
 
         public ContactFavourate(Int32 id_init)

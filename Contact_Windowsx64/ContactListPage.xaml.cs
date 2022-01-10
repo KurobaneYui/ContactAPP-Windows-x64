@@ -35,8 +35,7 @@ namespace Contact_Windowsx64
 
             if(e.Parameter != null)
             {
-                ContactEditor item = ContactDatabase.CurrentInstance.GetContactEditor(((ContactFavourate)e.Parameter).ID);
-                ContactListFrame.Navigate(typeof(ContactShowPage), item);
+                refreshEditor(((ContactFavourate)e.Parameter).ID);
             }
         }
 
@@ -48,8 +47,25 @@ namespace Contact_Windowsx64
 
         public void refreshEditor(Int32 ID)
         {
-            ContactEditor item = ContactDatabase.CurrentInstance.GetContactEditor(ID);
-            ContactListFrame.Navigate(typeof(ContactShowPage), item);
+            for (var i = 0; i < contactListPageListView.Items.Count; i++)
+            {
+                if (((ContactFavourate)contactListPageListView.Items[i]).ID == ID)
+                {
+                    contactListPageListView.SelectedIndex = i;
+                    break;
+                }
+            }
+            //ContactEditor item = ContactDatabase.CurrentInstance.GetContactEditor(ID);
+            //ContactListFrame.Navigate(typeof(ContactShowPage), item);
+        }
+
+        private void contactListPageListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                ContactEditor item = ContactDatabase.CurrentInstance.GetContactEditor(((ContactFavourate)e.AddedItems[0]).ID);
+                ContactListFrame.Navigate(typeof(ContactShowPage), item);
+            }
         }
     }
 }

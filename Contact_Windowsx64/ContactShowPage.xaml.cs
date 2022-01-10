@@ -39,9 +39,9 @@ namespace Contact_Windowsx64
                 _item = (ContactEditor)e.Parameter;
                 ContactEditor item = (ContactEditor)_item;
 
-                ImageBrush brush = new ImageBrush();
-                brush.ImageSource = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(this.BaseUri, item.ProfileImage));
-                profileImage.Fill = brush;
+                Windows.UI.Xaml.Media.Imaging.BitmapImage img = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(this.BaseUri, item.ProfileImage));
+                img.CreateOptions = Windows.UI.Xaml.Media.Imaging.BitmapCreateOptions.IgnoreImageCache;
+                (profileImage.Fill as ImageBrush).ImageSource = img;
 
                 Windows.UI.Color color = item.IsFavourate ? Windows.UI.Colors.Red : Windows.UI.Colors.Gray;
                 ((favourate.Content as FontIcon).Foreground as SolidColorBrush).Color = color;

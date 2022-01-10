@@ -27,7 +27,9 @@
             <TextBlock FontSize="32" Margin="28 28 0 20">联系人</TextBlock>
             <ScrollViewer>
                 <ListView x:Name="contactListPageListView"
-                          IsItemClickEnabled="True"
+                          IsItemClickEnabled="False"
+                          SelectionMode="Single"
+                          SelectionChanged="contactListPageListView_SelectionChanged"
                           ItemClick="contactListPageListView_ItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="data:ContactFavourate">
@@ -46,7 +48,12 @@
                                          Height="60"
                                          Margin="4">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="{Binding ProfileImage}"/>
+                                        <ImageBrush>
+                                            <ImageBrush.ImageSource>
+                                                <BitmapImage CreateOptions="IgnoreImageCache"
+                                                             UriSource="{Binding ProfileImage}"/>
+                                            </ImageBrush.ImageSource>
+                                        </ImageBrush>
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <TextBlock Grid.Column="1"
